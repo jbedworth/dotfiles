@@ -1,0 +1,7 @@
+# Ignore Temporary Files
+*.tmp
+*.bak
+*/automatic_backups/*
+*~
+*.swp
+*.swo
