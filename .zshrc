@@ -125,6 +125,12 @@ alias gitcom='git commit -am'
 # Added by `rbenv init` on Fri Nov 22 08:44:20 PST 2024
 eval "$(rbenv init - --no-rehash zsh)"
 
+# Init Nvm/Node
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
 # Init Rust
 export PATH=$HOME/cargo/bin:$PATH
 . "$HOME/.cargo/env"
@@ -137,4 +143,5 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
 source /Users/shreds/.config/op/plugins.sh
