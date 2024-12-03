@@ -111,6 +111,7 @@ fi
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # Set aliases
+alias vim="nvim"
 alias edconfig="$EDITOR $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 alias ll="ls -al --color"
