@@ -39,7 +39,7 @@ What is Kickstart?
     After understanding a bit more about Lua, you can use `:help lua-guide` as a
     reference for how Neovim integrates Lua.
     - :help lua-guide
-    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
+    -(or HTML version): https://neovim.io/doc/user/lua-guide.html
 
 Kickstart Guide:
 
@@ -86,6 +86,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
+vim.g.mapleader = " "
+
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.expand_tabs = true
 vim.g.tabstop = 2
@@ -178,10 +180,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -218,6 +220,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- require("vim-options")
+--
+--
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -596,14 +601,14 @@ require("lazy").setup({
 			})
 
 			-- Change diagnostic symbols in the sign column (gutter)
-			-- if vim.g.have_nerd_font then
-			--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-			--   local diagnostic_signs = {}
-			--   for type, icon in pairs(signs) do
-			--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-			--   end
-			--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-			-- end
+			if vim.g.have_nerd_font then
+				local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+				local diagnostic_signs = {}
+				for type, icon in pairs(signs) do
+					diagnostic_signs[vim.diagnostic.severity[type]] = icon
+				end
+				vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+			end
 
 			-- LSP servers and clients are able to communicate to each other what features they support.
 			--  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -623,9 +628,9 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- clangd = {},
-				-- gopls = {},
+				gopls = {},
 				-- pyright = {},
-				-- rust_analyzer = {},
+				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -846,13 +851,13 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
+		"catppuccin/nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("catppuccin-mocha")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
@@ -915,11 +920,15 @@ require("lazy").setup({
 				"c",
 				"diff",
 				"html",
+				"java",
+				"javascript",
 				"lua",
 				"luadoc",
 				"markdown",
 				"markdown_inline",
 				"query",
+				"ruby",
+				"typescript",
 				"vim",
 				"vimdoc",
 			},
