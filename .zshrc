@@ -50,9 +50,7 @@ zinit snippet OMZP::command-not-found
 zinit snippet OMZP::aws
 zinit snippet OMZP::brew
 zinit snippet OMZP::fzf
-zinit snippet OMZP::rust
 zinit snippet OMZP::dotenv
-zinit snippet OMZP::1password
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -145,4 +143,3 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-source /Users/shreds/.config/op/plugins.sh
