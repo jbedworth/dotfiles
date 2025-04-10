@@ -97,7 +97,7 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
   export EDITOR='nvim'
 fi
@@ -110,6 +110,9 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # Set aliases
 alias vim="nvim"
+alias vi="nvim"
+alias edit="nvim"
+alias ed="nvim"
 alias edconfig="$EDITOR $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 alias ll="ls -al --color"
@@ -121,18 +124,23 @@ alias gitst='git status'
 alias gitadd='git add -A'
 alias gitcom='git commit -am'
 
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims/:$PATH"
+
 # Added by `rbenv init` on Fri Nov 22 08:44:20 PST 2024
-eval "$(rbenv init - --no-rehash zsh)"
+# eval "$(rbenv init - --no-rehash zsh)"
 
 # Init Nvm/Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
 # Init Rust
 export PATH=$HOME/cargo/bin:$PATH
 . "$HOME/.cargo/env"
+
+# Init GoLang
+export PATH="/usr/local/go/bin:$PATH"
 
 # Setup Postgres
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
