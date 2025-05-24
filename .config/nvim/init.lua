@@ -90,9 +90,15 @@ vim.g.mapleader = " "
 
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.expand_tabs = true
+vim.g.autoindent = true
 vim.g.tabstop = 2
 vim.g.softtabstop = 2
 vim.g.shiftwidth = 2
+
+vim.g.wrap = false
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
@@ -118,9 +124,9 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+-- vim.opt.clipboard = "unnamedplus"
+-- end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -159,7 +165,13 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 20
+
+vim.opt.termguicolors = true
+vim.opt.background = "dark" -- colorschemes that can be light or dark will gravitate towards dark
+vim.opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+
+vim.opt.backspace = "indent,eol,start"
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -170,6 +182,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { desc = "Go to next [D]iagnostic message" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -693,7 +707,7 @@ require("lazy").setup({
 		cmd = { "ConformInfo" },
 		keys = {
 			{
-				"<leader>f",
+				"<leader>F",
 				function()
 					require("conform").format({ async = true, lsp_format = "fallback" })
 				end,
@@ -960,18 +974,18 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
-	-- require 'kickstart.plugins.debug',
-	-- require 'kickstart.plugins.indent_line',
-	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
-	-- require 'kickstart.plugins.neo-tree',
-	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+	-- require("kickstart.plugins.debug"),
+	-- require("kickstart.plugins.indent_line"),
+	-- require("kickstart.plugins.lint"),
+	-- require("kickstart.plugins.autopairs"),
+	-- require("kickstart.plugins.neo-tree"),
+	-- require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-	-- { import = 'custom.plugins' },
+	{ import = "custom.plugins" },
 	--
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!
