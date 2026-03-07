@@ -151,3 +151,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+
+# Added by Antigravity
+export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
