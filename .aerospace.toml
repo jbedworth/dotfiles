@@ -12,7 +12,8 @@ after-startup-command = [
     'workspace comms', 'layout accordion',
     'workspace ai', 'layout accordion',
     'workspace reference', 'layout accordion',
-    'workspace editor-1'
+    'workspace editor-1',
+    'exec-and-forget borders active_color=0xffFF3F36 inactive_color=0xff333333 width=4.0'
 ]
 
 # Start AeroSpace at login
@@ -25,7 +26,8 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+
+accordion-padding = 120
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -53,6 +55,8 @@ automatically-unhide-macos-hidden-apps = true
 # Fallback value (if you omit the key): persistent-workspaces = []
 persistent-workspaces = ["editor-1",
                          "editor-2",
+                         "editor-3",
+                         "editor-4",
                          "browser",
                          "writing",
                          "office",
@@ -67,15 +71,17 @@ persistent-workspaces = ["editor-1",
 [workspace-to-monitor-force-assignment]
 editor-1   = 'main'
 editor-2   = 'main'
+editor-3   = 'main'
+editor-4   = 'main'
 browser    = 'main'
 writing    = 'main'
 office     = 'main'
 personal   = 'main'
 terminal   = 'main'
-comms      = ['PA169', 'Sidecar', 'main']
-scratch    = ['PA169', 'Sidecar', 'main']
-reference  = ['PA169', 'Sidecar', 'main']
-ai         = ['PA169', 'Sidecar', 'main']
+comms      = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
+scratch    = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
+reFerence  = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
+ai         = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -110,10 +116,19 @@ if.app-name-regex-substring = 'Antigravity'
 run = 'move-node-to-workspace editor-1'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Code'
+if.app-name-regex-substring = 'Visual Studio Code'
 run = 'move-node-to-workspace editor-2'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Cursor'
+run = 'move-node-to-workspace editor-3'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'XCode'
+run = 'move-node-to-workspace editor-4'
+
+[[on-window-detected]]
+>>>>>>> 6009b9b (fix config, reinstall lazygit)
 if.app-name-regex-substring = 'Ghostty'
 run = 'move-node-to-workspace terminal'
 
@@ -123,6 +138,10 @@ run = 'move-node-to-workspace terminal'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Claude'
+run = 'move-node-to-workspace ai'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Codex'
 run = 'move-node-to-workspace ai'
 
 [[on-window-detected]]
@@ -150,7 +169,7 @@ if.app-name-regex-substring = 'Google Docs'
 run = 'move-node-to-workspace writing'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Word'
+if.app-name-regex-substring = 'Microsoft Word'
 run = 'move-node-to-workspace writing'
 
 # Comms:Chat Apps
@@ -166,6 +185,11 @@ run = 'move-node-to-workspace comms'
 # Comms:Meetings float
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Facetime'
+run = 'layout floating'
+
+[[on-window-detected]]
+>>>>>>> 6009b9b (fix config, reinstall lazygit)
 if.app-name-regex-substring = 'Zoom'
 run = 'layout floating'
 
@@ -211,11 +235,19 @@ run = 'move-node-to-workspace reference'
 # Floaters
 
 [[on-window-detected]]
+if.window-title-regex-substring = 'Picture in Picture'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = '1Password'
 run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'System Preferences|System Settings'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Google Drive'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -232,6 +264,19 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Activity Monitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'App Store'
+run = 'layout floating'
+
+# Float and ignore focus-stealing apps
+[[on-window-detected]]
+if.app-id = 'com.apple.notificationcenterui'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'layout floating'
 
 # 'main' binding mode declaration
@@ -258,18 +303,15 @@ run = 'layout floating'
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-    # You can uncomment the following lines to open up terminal with alt + enter shortcut
-    # (like in i3)
-    # alt-enter = '''exec-and-forget osascript -e '
-    # tell application "Terminal"
-    #     do script
-    #     activate
-    # end tell'
-    # '''
+
+    # Open up terminal with alt + enter shortcut (like in i3)
+    alt-enter = 'exec-and-forget open -n -a Ghostty'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
+
+    alt-m = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left'
@@ -292,17 +334,17 @@ run = 'layout floating'
     # Navigation
     alt-1 = 'workspace editor-1'
     alt-2 = 'workspace editor-2'
+    alt-3 = 'workspace editor-3'
+    alt-4 = 'workspace editor-4'
     alt-b = 'workspace browser'
     alt-t = 'workspace terminal'
     alt-c = 'workspace comms'
     alt-w = 'workspace writing'
-    alt-o = 'workspace office'
+    alt-f = 'workspace office'
     alt-s = 'workspace scratch'
     alt-r = 'workspace reference'
     alt-a = 'workspace ai'
     alt-p = 'workspace personal'
-    alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
     alt-5 = 'workspace 5'
     alt-6 = 'workspace 6'
     alt-7 = 'workspace 7'
@@ -312,17 +354,17 @@ run = 'layout floating'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace editor-1'
     alt-shift-2 = 'move-node-to-workspace editor-2'
+    alt-shift-3 = 'move-node-to-workspace editor-3'
+    alt-shift-4 = 'move-node-to-workspace editor-4'
     alt-shift-b = 'move-node-to-workspace browser'
     alt-shift-t = 'move-node-to-workspace terminal'
     alt-shift-c = 'move-node-to-workspace comms'
     alt-shift-w = 'move-node-to-workspace writing'
-    alt-shift-o = 'move-node-to-workspace office'
+    alt-shift-f = 'move-node-to-workspace office'
     alt-shift-s = 'move-node-to-workspace scratch'
     alt-shift-r = 'move-node-to-workspace reference'
     alt-shift-a = 'move-node-to-workspace ai'
     alt-shift-p = 'move-node-to-workspace personal'
-    alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
     alt-shift-5 = 'move-node-to-workspace 5'
     alt-shift-6 = 'move-node-to-workspace 6'
     alt-shift-7 = 'move-node-to-workspace 7'

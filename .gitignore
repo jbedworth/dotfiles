@@ -6,3 +6,6 @@
 *.swp
 *.swo
 .config/raycast/
+
+# Ignore System Files
+.DS_Store

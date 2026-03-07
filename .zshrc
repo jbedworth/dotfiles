@@ -126,15 +126,6 @@ alias gitcom='git commit -am'
 
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims/:$PATH"
 
-# Added by `rbenv init` on Fri Nov 22 08:44:20 PST 2024
-# eval "$(rbenv init - --no-rehash zsh)"
-
-# Init Nvm/Node
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-
 # Init Rust
 export PATH=$HOME/cargo/bin:$PATH
 . "$HOME/.cargo/env"
@@ -147,10 +138,20 @@ export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/postgresql@17/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
 
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
+# Added by Antigravity
+export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export CLAUDE_CODE_OAUTH_TOKEN="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"
 
 # Added by Antigravity
 export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/shreds/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/shreds/.lmstudio/bin"
+# End of LM Studio CLI section
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
