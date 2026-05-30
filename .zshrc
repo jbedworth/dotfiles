@@ -86,15 +86,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-
-# Setup History Date Format
-HIST_STAMPS="yyyy-mm-dd"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
@@ -105,53 +96,19 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
-# Setup 1Password SSH Agent
-export SSH_AUTH_SOCK=~/.1password/agent.sock
-
-# Set aliases
-alias vim="nvim"
-alias vi="nvim"
-alias edit="nvim"
-alias ed="nvim"
-alias edconfig="$EDITOR $HOME/.zshrc"
-alias reload="source $HOME/.zshrc"
-alias ll="ls -al --color"
-alias home="cd $HOME"
-alias c='clear'
-alias gitco='git checkout'
-alias gitbr='git branch'
-alias gitst='git status'
-alias gitadd='git add -A'
-alias gitcom='git commit -am'
-
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims/:$PATH"
-
-# Init Rust
-export PATH=$HOME/cargo/bin:$PATH
-. "$HOME/.cargo/env"
-
-# Init GoLang
-export PATH="/usr/local/go/bin:$PATH"
-
-# Setup Postgres
-export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@17/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
-
-# Added by Antigravity
-export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-
-# Added by Antigravity
-export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/shreds/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/shreds/.lmstudio/bin"
-# End of LM Studio CLI section
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 source ~/.env
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+
+# Load non-interactive but critical environment settings
+# IMPORTANT:  DO NOT ADD ENVIRONMENT AND PATH SETTINGS HERE
+# Add them to ~/.zshenv
+source .zshenv
 
 # Shell integrations
 eval "$(fzf --zsh)"
