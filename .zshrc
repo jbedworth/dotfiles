@@ -141,7 +141,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/postgresql@17/include"
 # Added by Antigravity
 export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export CLAUDE_CODE_OAUTH_TOKEN="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"
 
 # Added by Antigravity
 export PATH="/Users/shreds/.antigravity/antigravity/bin:$PATH"
@@ -151,6 +150,8 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/shreds/Library/Caches/heroku/autocomplete/zsh_se
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/shreds/.lmstudio/bin"
 # End of LM Studio CLI section
+
+source ~/.env
 
 # Shell integrations
 eval "$(fzf --zsh)"

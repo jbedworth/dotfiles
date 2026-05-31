@@ -128,7 +128,6 @@ if.app-name-regex-substring = 'XCode'
 run = 'move-node-to-workspace editor-4'
 
 [[on-window-detected]]
->>>>>>> 6009b9b (fix config, reinstall lazygit)
 if.app-name-regex-substring = 'Ghostty'
 run = 'move-node-to-workspace terminal'
 
@@ -189,7 +188,6 @@ if.app-name-regex-substring = 'Facetime'
 run = 'layout floating'
 
 [[on-window-detected]]
->>>>>>> 6009b9b (fix config, reinstall lazygit)
 if.app-name-regex-substring = 'Zoom'
 run = 'layout floating'
 
