@@ -12,6 +12,12 @@ export LANG=en_US.UTF-8
 # Setup 1Password SSH Agent
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
+# Setup 1Password .env ::: This .env file is etherial and managed by 1Password
+# IMPORTANT:  DO NOT SAVE CREDENTIALS OR SECRETS IN ANY CONFIGURATION FILE
+# USE 1Password Developer Tools Environments instead!!!!!!!!!!
+source ~/.env
+
+
 # Set aliases
 alias vim="nvim"
 alias edconfig="$EDITOR $HOME/.zshrc"

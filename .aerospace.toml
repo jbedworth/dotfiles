@@ -80,7 +80,7 @@ personal   = 'main'
 terminal   = 'main'
 comms      = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
 scratch    = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
-reFerence  = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
+reference  = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
 ai         = ['PA169', 'PG32UCDM', 'Sidecar', 'Built-in Retina Display', 'LG UltraFine', 'main']
 
 # A callback that runs every time binding mode changes
@@ -116,7 +116,7 @@ if.app-name-regex-substring = 'Antigravity'
 run = 'move-node-to-workspace editor-1'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Visual Studio Code'
+if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace editor-2'
 
 [[on-window-detected]]
@@ -124,7 +124,7 @@ if.app-name-regex-substring = 'Cursor'
 run = 'move-node-to-workspace editor-3'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'XCode'
+if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace editor-4'
 
 [[on-window-detected]]
@@ -136,11 +136,11 @@ if.app-name-regex-substring = 'Terminal'
 run = 'move-node-to-workspace terminal'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Claude'
+if.app-id = 'com.anthropic.claudefordesktop'
 run = 'move-node-to-workspace ai'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Codex'
+if.app-id = 'com.openai.codex'
 run = 'move-node-to-workspace ai'
 
 [[on-window-detected]]
@@ -212,11 +212,11 @@ if.app-name-regex-substring = 'Spotify'
 run = 'move-node-to-workspace personal'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Mail'
+if.app-name-regex-substring = '^Mail$'
 run = 'move-node-to-workspace personal'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Calendar'
+if.app-name-regex-substring = '^Calendar$'
 run = 'move-node-to-workspace personal'
 
 # Reference Apps
@@ -224,7 +224,6 @@ run = 'move-node-to-workspace personal'
 [[on-window-detected]]
 if.app-name-regex-substring = 'Evernote'
 run = 'move-node-to-workspace reference'
-
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Notion'
@@ -237,11 +236,11 @@ if.window-title-regex-substring = 'Picture in Picture'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = '1Password'
+if.app-id = 'com.1password.1password'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'System Preferences|System Settings'
+if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -257,7 +256,7 @@ if.app-name-regex-substring = 'Calculator'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Finder'
+if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]

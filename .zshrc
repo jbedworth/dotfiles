@@ -99,16 +99,10 @@ fi
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
-source ~/.env
-
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 # Load non-interactive but critical environment settings
 # IMPORTANT:  DO NOT ADD ENVIRONMENT AND PATH SETTINGS HERE
 # Add them to ~/.zshenv
-source .zshenv
+source ~/.zshenv
 
 # Shell integrations
 eval "$(fzf --zsh)"
