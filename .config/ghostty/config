@@ -1,4 +1,11 @@
-
-font-family = "FiraCode Nerd Font Mono"
-font-size = "16"
-window-decoration = false
+# Ghostty configuration (version-controlled via ~/dotfiles)
+theme = Catppuccin Mocha
+font-family = FiraCode Nerd Font Mono
+font-size = 16
+window-decoration = none
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+macos-option-as-alt = true
+window-save-state = always
+scrollback-limit = 52428800

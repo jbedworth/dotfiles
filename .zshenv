@@ -30,6 +30,8 @@ alias gitbr='git branch'
 alias gitst='git status'
 alias gitadd='git add -A'
 alias gitcom='git commit -am'
+alias bindevlog='bin/dev 2>&1 | /usr/sbin/rotatelogs -n 2 log/dev.log 10M'
+alias taildevlog='tail -f log/dev.log'
 
 # Init Rust
 export PATH=$HOME/cargo/bin:$PATH
