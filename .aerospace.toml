@@ -128,6 +128,10 @@ if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace editor-4'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'iTerm2'
+run = 'move-node-to-workspace terminal'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'Ghostty'
 run = 'move-node-to-workspace terminal'
 
